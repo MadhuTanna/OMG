@@ -19,7 +19,6 @@ class Test(unittest.TestCase):
         driver.get("https://reqres.in/")
         self.assertEqual(driver.title, "Reqres - A hosted REST-API ready to respond to your AJAX requests", "Title does not match")
         print("Home Page title - Pass")
-        print("Home Page title - Pass")
 
     #verify list of EndPoints
     def verifyLoEndpoints(self):
@@ -38,8 +37,6 @@ class Test(unittest.TestCase):
                 break
 
         self.assertEqual(Match,True, msg="List of API is fully or partially not displayed")
-        print("List of APIs on the Home Page - Pass")
-
         print("List of APIs on the Home Page - Pass")
 
     #verify Sample Request and Response for list user
@@ -62,8 +59,6 @@ class Test(unittest.TestCase):
         
         self.assertEqual(jresponse,jsample, msg = "sample response on homepage is failed")
         print("sample response when home page load - Pass")
-        self.assertEqual(jresponse,jsample, msg = "sample response on homepage is failed")
-        print("sample response when home page load - Pass")
     
     #verify sample request and response for get user
     def verifyGetUserHomepage(self):
@@ -72,7 +67,6 @@ class Test(unittest.TestCase):
         homepage.getuser.click()
         self.assertEqual(homepage.reqbox.text, "Request\n/api/users/2")
         self.assertEqual(homepage.resbox.text, "Response\n200")
-        print("sample response on Home page for Get User API - Pass")
         print("sample response on Home page for Get User API - Pass")
     
     # verifySchema and response code for getUSER API request
@@ -92,7 +86,6 @@ class Test(unittest.TestCase):
         builder.add_object(jsample)
         
         jsonschema.validate(jresponse, builder.to_schema())
-        print("Get User API Schema - Pass")
         print("Get User API Schema - Pass")
 
     # verify report

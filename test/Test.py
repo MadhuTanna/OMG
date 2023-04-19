@@ -130,5 +130,4 @@ class Test(unittest.TestCase):
         if((test_repo["Total Price"]).equals(test_repo["Quantity"]*test_repo["Unit Price"])):
             print("Total price/Open position correct")
         else:
->>>>>>> a90886efb95c2e3eb93e750516cf1d6d4d84cf4e
             print("Total Price calculation does not match")

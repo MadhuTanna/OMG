@@ -18,6 +18,7 @@ class Test(unittest.TestCase):
     def verifyHomeTitle(self):
         driver.get("https://reqres.in/")
         self.assertEqual(driver.title, "Reqres - A hosted REST-API ready to respond to your AJAX requests", "Title does not match")
+        print("Home Page title - Pass")
 
     #verify list of EndPoints
     def verifyLoEndpoints(self):
@@ -36,15 +37,17 @@ class Test(unittest.TestCase):
                 break
 
         self.assertEqual(Match,True, msg="List of API is fully or partially not displayed")
-        
+        print("List of APIs on the Home Page - Pass")
+
     #verify Sample Request and Response for list user
     def verifyListUserHomepage(self):
 
         homepage = Homepage(driver)
         
         homepage.listuser.click()
-        self.assertEqual(homepage.reqbox.text, "Request\n/api/users?page=2")
-        self.assertEqual(homepage.resbox.text, "Response\n200")
+        self.assertEqual(homepage.reqbox.text, "Request\n/api/users?page=2",msg="Issue with request on homepage")
+        self.assertEqual(homepage.resbox.text, "Response\n200", msg="issue with response code on homepage")
+        print("Sample Request URL and Response code for list user - Pass")
         
         # verify sample response when home page load
         
@@ -54,7 +57,8 @@ class Test(unittest.TestCase):
         jfile = open(docpath + "\listuser_sample.json")
         jsample = json.load(jfile)
         
-        self.assertEqual(jresponse,jsample)
+        self.assertEqual(jresponse,jsample, msg = "sample response on homepage is failed")
+        print("sample response when home page load - Pass")
     
     #verify sample request and response for get user
     def verifyGetUserHomepage(self):
@@ -63,6 +67,7 @@ class Test(unittest.TestCase):
         homepage.getuser.click()
         self.assertEqual(homepage.reqbox.text, "Request\n/api/users/2")
         self.assertEqual(homepage.resbox.text, "Response\n200")
+        print("sample response on Home page for Get User API - Pass")
     
     # verifySchema and response code for getUSER API request
     def verifyGetUserAPI(self):
@@ -81,6 +86,7 @@ class Test(unittest.TestCase):
         builder.add_object(jsample)
         
         jsonschema.validate(jresponse, builder.to_schema())
+        print("Get User API Schema - Pass")
 
     # verify report
     def verifyExcelrepo(self):
